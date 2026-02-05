@@ -107,4 +107,7 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  corePlugins: {
+    scrollbarGutter: false,
+  },
 } satisfies Config;
