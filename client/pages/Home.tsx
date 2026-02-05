@@ -161,7 +161,7 @@ export default function Home() {
             {/* Right side - Image */}
             <div className="hidden md:flex justify-end">
               <img
-                src="https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=600&h=600&fit=crop"
+                src="https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600"
                 alt="Hero Product"
                 className="w-80 h-80 object-cover rounded-3xl shadow-2xl"
               />
