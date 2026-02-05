@@ -35,9 +35,11 @@ const App = () => (
   </QueryClientProvider>
 );
 
-if (typeof document !== "undefined") {
-  const rootElement = document.getElementById("root");
-  if (rootElement && !rootElement.innerHTML) {
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  // Prevent multiple createRoot calls during HMR
+  if (!rootElement.hasAttribute("data-react-root")) {
+    rootElement.setAttribute("data-react-root", "true");
     createRoot(rootElement).render(<App />);
   }
 }
