@@ -35,16 +35,9 @@ const App = () => (
   </QueryClientProvider>
 );
 
-let root: ReturnType<typeof createRoot> | null = null;
-
-function renderApp() {
+if (typeof document !== "undefined") {
   const rootElement = document.getElementById("root");
-  if (!rootElement) return;
-
-  if (!root) {
-    root = createRoot(rootElement);
+  if (rootElement && !rootElement.innerHTML) {
+    createRoot(rootElement).render(<App />);
   }
-  root.render(<App />);
 }
-
-renderApp();
