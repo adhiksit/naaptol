@@ -77,32 +77,28 @@ export default function Home() {
       id: "hoodies",
       name: "Hoodies",
       itemCount: 45,
-      image:
-        "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-indigo-50",
     },
     {
       id: "tshirts",
       name: "T-Shirts",
       itemCount: 67,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-orange-50",
     },
     {
       id: "accessories",
       name: "Accessories",
       itemCount: 89,
-      image:
-        "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-blue-50",
     },
     {
       id: "bottoms",
       name: "Bottoms",
       itemCount: 34,
-      image:
-        "https://images.unsplash.com/photo-1506629082847-11d3e392e467?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-green-50",
     },
   ];
