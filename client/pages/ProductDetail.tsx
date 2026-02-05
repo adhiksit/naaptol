@@ -53,9 +53,7 @@ export default function ProductDetail() {
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
                     className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition ${
-                      selectedImage === idx
-                        ? "border-primary"
-                        : "border-border"
+                      selectedImage === idx ? "border-primary" : "border-border"
                     }`}
                   >
                     <img
@@ -106,7 +104,13 @@ export default function ProductDetail() {
                     ₹{product.originalPrice}
                   </span>
                   <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                    -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                    -
+                    {Math.round(
+                      ((product.originalPrice - product.price) /
+                        product.originalPrice) *
+                        100,
+                    )}
+                    %
                   </span>
                 </div>
                 <p className="text-muted-foreground">
@@ -116,17 +120,26 @@ export default function ProductDetail() {
 
               {/* Description */}
               <div>
-                <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                <h3 className="font-semibold text-foreground mb-2">
+                  Description
+                </h3>
                 <p className="text-muted-foreground">{product.description}</p>
               </div>
 
               {/* Specifications */}
               <div>
-                <h3 className="font-semibold text-foreground mb-3">Specifications</h3>
+                <h3 className="font-semibold text-foreground mb-3">
+                  Specifications
+                </h3>
                 <div className="space-y-2">
                   {product.specs.map((spec, idx) => (
-                    <div key={idx} className="flex justify-between py-2 border-b border-border">
-                      <span className="text-muted-foreground">{spec.label}</span>
+                    <div
+                      key={idx}
+                      className="flex justify-between py-2 border-b border-border"
+                    >
+                      <span className="text-muted-foreground">
+                        {spec.label}
+                      </span>
                       <span className="font-semibold text-foreground">
                         {spec.value}
                       </span>
@@ -138,7 +151,9 @@ export default function ProductDetail() {
               {/* Quantity & Actions */}
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <label className="text-foreground font-semibold">Quantity</label>
+                  <label className="text-foreground font-semibold">
+                    Quantity
+                  </label>
                   <div className="flex items-center gap-2 border border-border rounded-lg">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -190,7 +205,9 @@ export default function ProductDetail() {
                     <p className="font-semibold text-foreground text-sm">
                       Easy Returns
                     </p>
-                    <p className="text-xs text-muted-foreground">30 days return</p>
+                    <p className="text-xs text-muted-foreground">
+                      30 days return
+                    </p>
                   </div>
                 </div>
               </div>

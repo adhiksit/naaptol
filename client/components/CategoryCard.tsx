@@ -18,7 +18,9 @@ export default function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link to={`/shop?category=${id}`}>
-      <div className={`${bgColor} rounded-xl overflow-hidden group cursor-pointer h-64 md:h-72 relative`}>
+      <div
+        className={`${bgColor} rounded-xl overflow-hidden group cursor-pointer h-64 md:h-72 relative`}
+      >
         <div className="relative w-full h-full overflow-hidden">
           <img
             src={image}

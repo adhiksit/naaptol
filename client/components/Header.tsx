@@ -17,16 +17,28 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-foreground hover:text-primary transition">
+            <Link
+              to="/"
+              className="text-foreground hover:text-primary transition"
+            >
               Home
             </Link>
-            <Link to="/shop" className="text-foreground hover:text-primary transition">
+            <Link
+              to="/shop"
+              className="text-foreground hover:text-primary transition"
+            >
               Shop
             </Link>
-            <a href="#categories" className="text-foreground hover:text-primary transition">
+            <a
+              href="#categories"
+              className="text-foreground hover:text-primary transition"
+            >
               Categories
             </a>
-            <a href="#about" className="text-foreground hover:text-primary transition">
+            <a
+              href="#about"
+              className="text-foreground hover:text-primary transition"
+            >
               About
             </a>
           </nav>
@@ -74,10 +86,16 @@ export default function Header() {
             >
               Shop
             </Link>
-            <a href="#categories" className="block text-foreground hover:text-primary transition">
+            <a
+              href="#categories"
+              className="block text-foreground hover:text-primary transition"
+            >
               Categories
             </a>
-            <a href="#about" className="block text-foreground hover:text-primary transition">
+            <a
+              href="#about"
+              className="block text-foreground hover:text-primary transition"
+            >
               About
             </a>
             <div className="flex gap-4 pt-4 border-t border-border">

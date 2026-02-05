@@ -76,8 +76,8 @@ export default function Checkout() {
                       s < step
                         ? "bg-primary text-primary-foreground"
                         : s === step
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {s < step ? <Check className="w-5 h-5" /> : s}
@@ -87,7 +87,11 @@ export default function Checkout() {
                       s <= step ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
-                    {s === 1 ? "Shipping" : s === 2 ? "Payment" : "Confirmation"}
+                    {s === 1
+                      ? "Shipping"
+                      : s === 2
+                        ? "Payment"
+                        : "Confirmation"}
                   </span>
                   {s < 3 && (
                     <div
@@ -286,8 +290,14 @@ export default function Checkout() {
 
                   <div className="space-y-4">
                     {/* Credit/Debit Card */}
-                    <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
-                      style={{borderColor: paymentMethod === 'card' ? 'var(--primary)' : 'var(--border)'}}
+                    <label
+                      className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
+                      style={{
+                        borderColor:
+                          paymentMethod === "card"
+                            ? "var(--primary)"
+                            : "var(--border)",
+                      }}
                     >
                       <input
                         type="radio"
@@ -330,8 +340,14 @@ export default function Checkout() {
                     )}
 
                     {/* UPI */}
-                    <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
-                      style={{borderColor: paymentMethod === 'upi' ? 'var(--primary)' : 'var(--border)'}}
+                    <label
+                      className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
+                      style={{
+                        borderColor:
+                          paymentMethod === "upi"
+                            ? "var(--primary)"
+                            : "var(--border)",
+                      }}
                     >
                       <input
                         type="radio"
@@ -347,8 +363,14 @@ export default function Checkout() {
                     </label>
 
                     {/* Net Banking */}
-                    <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
-                      style={{borderColor: paymentMethod === 'netbanking' ? 'var(--primary)' : 'var(--border)'}}
+                    <label
+                      className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
+                      style={{
+                        borderColor:
+                          paymentMethod === "netbanking"
+                            ? "var(--primary)"
+                            : "var(--border)",
+                      }}
                     >
                       <input
                         type="radio"
@@ -364,8 +386,14 @@ export default function Checkout() {
                     </label>
 
                     {/* Cash on Delivery */}
-                    <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
-                      style={{borderColor: paymentMethod === 'cod' ? 'var(--primary)' : 'var(--border)'}}
+                    <label
+                      className="flex items-center p-4 border-2 rounded-lg cursor-pointer transition hover:border-primary"
+                      style={{
+                        borderColor:
+                          paymentMethod === "cod"
+                            ? "var(--primary)"
+                            : "var(--border)",
+                      }}
                     >
                       <input
                         type="radio"
@@ -415,8 +443,12 @@ export default function Checkout() {
                   </p>
 
                   <div className="bg-muted rounded-lg p-6 mb-6 text-left">
-                    <p className="text-sm text-muted-foreground mb-2">Order Number</p>
-                    <p className="text-2xl font-bold text-foreground">#NAP12345678</p>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Order Number
+                    </p>
+                    <p className="text-2xl font-bold text-foreground">
+                      #NAP12345678
+                    </p>
                   </div>
 
                   <Link
@@ -433,7 +465,9 @@ export default function Checkout() {
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-muted rounded-lg p-6 space-y-6">
-              <h2 className="text-xl font-bold text-foreground">Order Summary</h2>
+              <h2 className="text-xl font-bold text-foreground">
+                Order Summary
+              </h2>
 
               <div className="space-y-3 max-h-64 overflow-y-auto">
                 {cartItems.map((item) => (
@@ -444,7 +478,9 @@ export default function Checkout() {
                     <span>
                       {item.name} x{item.quantity}
                     </span>
-                    <span className="font-semibold">₹{item.price * item.quantity}</span>
+                    <span className="font-semibold">
+                      ₹{item.price * item.quantity}
+                    </span>
                   </div>
                 ))}
               </div>

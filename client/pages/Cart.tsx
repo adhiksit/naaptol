@@ -18,7 +18,8 @@ export default function Cart() {
       id: "1",
       name: "Classic College Hoodie",
       price: 899,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=200",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=200",
       quantity: 1,
       size: "M",
     },
@@ -26,7 +27,8 @@ export default function Cart() {
       id: "2",
       name: "Premium College T-Shirt",
       price: 349,
-      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=200",
+      image:
+        "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=200",
       quantity: 2,
       size: "L",
     },
@@ -39,8 +41,8 @@ export default function Cart() {
     }
     setCartItems(
       cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
+        item.id === id ? { ...item, quantity: newQuantity } : item,
+      ),
     );
   };
 
@@ -48,7 +50,10 @@ export default function Cart() {
     setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
   const tax = subtotal * 0.18; // 18% GST
   const shipping = subtotal > 500 ? 0 : 100;
   const total = subtotal + tax + shipping;
@@ -64,7 +69,8 @@ export default function Cart() {
             Shopping Cart
           </h1>
           <p className="text-muted-foreground mt-2">
-            {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in your cart
+            {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in your
+            cart
           </p>
         </div>
       </section>
@@ -90,11 +96,17 @@ export default function Cart() {
 
                   {/* Product Info */}
                   <div className="flex-1">
-                    <h3 className="font-semibold text-foreground">{item.name}</h3>
+                    <h3 className="font-semibold text-foreground">
+                      {item.name}
+                    </h3>
                     {item.size && (
-                      <p className="text-sm text-muted-foreground">Size: {item.size}</p>
+                      <p className="text-sm text-muted-foreground">
+                        Size: {item.size}
+                      </p>
                     )}
-                    <p className="text-lg font-bold text-primary mt-2">₹{item.price}</p>
+                    <p className="text-lg font-bold text-primary mt-2">
+                      ₹{item.price}
+                    </p>
                   </div>
 
                   {/* Quantity & Actions */}
@@ -102,14 +114,20 @@ export default function Cart() {
                     {/* Quantity Control */}
                     <div className="flex items-center gap-2 border border-border rounded-lg">
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
                         className="p-2 hover:bg-muted transition"
                       >
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="px-3 font-semibold">{item.quantity}</span>
+                      <span className="px-3 font-semibold">
+                        {item.quantity}
+                      </span>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
                         className="p-2 hover:bg-muted transition"
                       >
                         <Plus className="w-4 h-4" />
@@ -131,7 +149,9 @@ export default function Cart() {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 bg-muted rounded-lg p-6 space-y-4">
-                <h2 className="text-2xl font-bold text-foreground">Order Summary</h2>
+                <h2 className="text-2xl font-bold text-foreground">
+                  Order Summary
+                </h2>
 
                 <div className="space-y-3 py-4 border-y border-border">
                   <div className="flex justify-between text-foreground">

@@ -25,7 +25,8 @@ export default function Shop() {
       name: "Classic College Hoodie",
       price: 899,
       originalPrice: 1299,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 245,
       category: "hoodies",
@@ -36,7 +37,8 @@ export default function Shop() {
       name: "Premium College T-Shirt",
       price: 349,
       originalPrice: 599,
-      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 189,
       category: "tshirts",
@@ -46,7 +48,8 @@ export default function Shop() {
       name: "Logo Baseball Cap",
       price: 299,
       originalPrice: 449,
-      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 156,
       category: "accessories",
@@ -56,7 +59,8 @@ export default function Shop() {
       name: "College Backpack",
       price: 1299,
       originalPrice: 1899,
-      image: "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.9,
       reviews: 312,
       category: "accessories",
@@ -67,7 +71,8 @@ export default function Shop() {
       name: "Fleece Sweatpants",
       price: 649,
       originalPrice: 999,
-      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.5,
       reviews: 134,
       category: "bottoms",
@@ -77,7 +82,8 @@ export default function Shop() {
       name: "College Sticker Pack",
       price: 99,
       originalPrice: 199,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.4,
       reviews: 98,
       category: "accessories",
@@ -87,7 +93,8 @@ export default function Shop() {
       name: "Vintage College Sweatshirt",
       price: 799,
       originalPrice: 1199,
-      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 201,
       category: "hoodies",
@@ -97,7 +104,8 @@ export default function Shop() {
       name: "Polo T-Shirt",
       price: 449,
       originalPrice: 749,
-      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 167,
       category: "tshirts",
@@ -107,7 +115,8 @@ export default function Shop() {
       name: "College Water Bottle",
       price: 299,
       originalPrice: 499,
-      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 234,
       category: "accessories",
@@ -141,7 +150,9 @@ export default function Shop() {
       key: "hot-deals",
       title: "🔥 Hot Deals",
       subtitle: "Limited time offers on your favorites",
-      products: allProducts.filter((p) => p.originalPrice && p.originalPrice - p.price > 300),
+      products: allProducts.filter(
+        (p) => p.originalPrice && p.originalPrice - p.price > 300,
+      ),
     },
     {
       key: "featured",
@@ -176,7 +187,8 @@ export default function Shop() {
             College Essentials
           </h1>
           <p className="text-lg text-primary-foreground/90 max-w-2xl">
-            Curated collection of premium college merchandise designed for style, comfort, and self-expression.
+            Curated collection of premium college merchandise designed for
+            style, comfort, and self-expression.
           </p>
         </div>
       </section>
@@ -220,7 +232,8 @@ export default function Shop() {
                 {categories.find((c) => c.id === selectedCategory)?.label}
               </h2>
               <p className="text-muted-foreground mt-2">
-                {getProductsByCategory(selectedCategory).length} products available
+                {getProductsByCategory(selectedCategory).length} products
+                available
               </p>
             </div>
             <button
@@ -295,7 +308,9 @@ export default function Shop() {
             <h2 className="text-3xl md:text-4xl font-black text-foreground mb-2">
               🎯 All Products
             </h2>
-            <p className="text-muted-foreground">Browse our complete collection</p>
+            <p className="text-muted-foreground">
+              Browse our complete collection
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

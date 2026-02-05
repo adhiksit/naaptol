@@ -20,7 +20,8 @@ export default function Home() {
       name: "Classic College Hoodie",
       price: 899,
       originalPrice: 1299,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 245,
     },
@@ -29,7 +30,8 @@ export default function Home() {
       name: "Premium College T-Shirt",
       price: 349,
       originalPrice: 599,
-      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 189,
     },
@@ -38,7 +40,8 @@ export default function Home() {
       name: "Logo Baseball Cap",
       price: 299,
       originalPrice: 449,
-      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 156,
     },
@@ -47,7 +50,8 @@ export default function Home() {
       name: "College Backpack",
       price: 1299,
       originalPrice: 1899,
-      image: "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.9,
       reviews: 312,
     },
@@ -56,7 +60,8 @@ export default function Home() {
       name: "Fleece Sweatpants",
       price: 649,
       originalPrice: 999,
-      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.5,
       reviews: 134,
     },
@@ -65,7 +70,8 @@ export default function Home() {
       name: "College Sticker Pack",
       price: 99,
       originalPrice: 199,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.4,
       reviews: 98,
     },
@@ -77,28 +83,32 @@ export default function Home() {
       id: "hoodies",
       name: "Hoodies",
       itemCount: 45,
-      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-indigo-50",
     },
     {
       id: "tshirts",
       name: "T-Shirts",
       itemCount: 67,
-      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-orange-50",
     },
     {
       id: "accessories",
       name: "Accessories",
       itemCount: 89,
-      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-blue-50",
     },
     {
       id: "bottoms",
       name: "Bottoms",
       itemCount: 34,
-      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image:
+        "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       bgColor: "bg-green-50",
     },
   ];
@@ -149,11 +159,15 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-3xl font-bold">15K+</p>
-                  <p className="text-sm text-primary-foreground/80">Happy Customers</p>
+                  <p className="text-sm text-primary-foreground/80">
+                    Happy Customers
+                  </p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold">4.8★</p>
-                  <p className="text-sm text-primary-foreground/80">Avg Rating</p>
+                  <p className="text-sm text-primary-foreground/80">
+                    Avg Rating
+                  </p>
                 </div>
               </div>
             </div>
@@ -378,13 +392,22 @@ export default function Home() {
               © 2024 NAAPTOL. All rights reserved.
             </p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="text-background/80 hover:text-background transition">
+              <a
+                href="#"
+                className="text-background/80 hover:text-background transition"
+              >
                 Twitter
               </a>
-              <a href="#" className="text-background/80 hover:text-background transition">
+              <a
+                href="#"
+                className="text-background/80 hover:text-background transition"
+              >
                 Instagram
               </a>
-              <a href="#" className="text-background/80 hover:text-background transition">
+              <a
+                href="#"
+                className="text-background/80 hover:text-background transition"
+              >
                 Facebook
               </a>
             </div>
