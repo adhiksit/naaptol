@@ -37,9 +37,15 @@ const App = () => (
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  // Prevent multiple createRoot calls during HMR
-  if (!rootElement.hasAttribute("data-react-root")) {
-    rootElement.setAttribute("data-react-root", "true");
-    createRoot(rootElement).render(<App />);
+  // Store root instance on window to prevent multiple createRoot calls
+  const key = "__NAAPTOL_REACT_ROOT__";
+  const existingRoot = (window as any)[key];
+
+  if (existingRoot) {
+    existingRoot.render(<App />);
+  } else {
+    const newRoot = createRoot(rootElement);
+    (window as any)[key] = newRoot;
+    newRoot.render(<App />);
   }
 }
