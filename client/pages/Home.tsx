@@ -20,8 +20,7 @@ export default function Home() {
       name: "Classic College Hoodie",
       price: 899,
       originalPrice: 1299,
-      image:
-        "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 245,
     },
@@ -30,8 +29,7 @@ export default function Home() {
       name: "Premium College T-Shirt",
       price: 349,
       originalPrice: 599,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 189,
     },
@@ -40,8 +38,7 @@ export default function Home() {
       name: "Logo Baseball Cap",
       price: 299,
       originalPrice: 449,
-      image:
-        "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 156,
     },
@@ -50,8 +47,7 @@ export default function Home() {
       name: "College Backpack",
       price: 1299,
       originalPrice: 1899,
-      image:
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.9,
       reviews: 312,
     },
@@ -60,8 +56,7 @@ export default function Home() {
       name: "Fleece Sweatpants",
       price: 649,
       originalPrice: 999,
-      image:
-        "https://images.unsplash.com/photo-1506629082847-11d3e392e467?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.5,
       reviews: 134,
     },
@@ -70,8 +65,7 @@ export default function Home() {
       name: "College Sticker Pack",
       price: 99,
       originalPrice: 199,
-      image:
-        "https://images.unsplash.com/photo-1589985643246-8049b3e0eab7?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.4,
       reviews: 98,
     },
