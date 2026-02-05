@@ -35,8 +35,16 @@ const App = () => (
   </QueryClientProvider>
 );
 
-const rootElement = document.getElementById("root");
-if (rootElement) {
-  const root = createRoot(rootElement);
+let root: ReturnType<typeof createRoot> | null = null;
+
+function renderApp() {
+  const rootElement = document.getElementById("root");
+  if (!rootElement) return;
+
+  if (!root) {
+    root = createRoot(rootElement);
+  }
   root.render(<App />);
 }
+
+renderApp();
