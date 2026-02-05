@@ -17,9 +17,9 @@ export default function ProductDetail() {
     rating: 4.8,
     reviews: 245,
     images: [
-      "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800&h=800&fit=crop",
+      "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=800",
     ],
     description:
       "Premium quality college hoodie made from 100% organic cotton. Perfect for campus life and weekend hangouts. Features embroidered college logo and comfortable fit.",
