@@ -1,42 +1,42 @@
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
-import { Slider } from "@/components/ui/slider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
-import { X } from "lucide-react";
+import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  rating?: number;
+  reviews?: number;
+  category: string;
+  isFeatured?: boolean;
+}
 
 export default function Shop() {
-  const [sortBy, setSortBy] = useState("popular");
-  const [priceRange, setPriceRange] = useState([100, 2000]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  const allProducts = [
+  const allProducts: Product[] = [
     {
       id: "1",
       name: "Classic College Hoodie",
       price: 899,
       originalPrice: 1299,
-      image:
-        "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 245,
       category: "hoodies",
+      isFeatured: true,
     },
     {
       id: "2",
       name: "Premium College T-Shirt",
       price: 349,
       originalPrice: 599,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 189,
       category: "tshirts",
@@ -46,8 +46,7 @@ export default function Shop() {
       name: "Logo Baseball Cap",
       price: 299,
       originalPrice: 449,
-      image:
-        "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 156,
       category: "accessories",
@@ -57,19 +56,18 @@ export default function Shop() {
       name: "College Backpack",
       price: 1299,
       originalPrice: 1899,
-      image:
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/31359734/pexels-photo-31359734.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.9,
       reviews: 312,
       category: "accessories",
+      isFeatured: true,
     },
     {
       id: "5",
       name: "Fleece Sweatpants",
       price: 649,
       originalPrice: 999,
-      image:
-        "https://images.unsplash.com/photo-1506629082847-11d3e392e467?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.5,
       reviews: 134,
       category: "bottoms",
@@ -79,8 +77,7 @@ export default function Shop() {
       name: "College Sticker Pack",
       price: 99,
       originalPrice: 199,
-      image:
-        "https://images.unsplash.com/photo-1589985643246-8049b3e0eab7?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.4,
       reviews: 98,
       category: "accessories",
@@ -90,8 +87,7 @@ export default function Shop() {
       name: "Vintage College Sweatshirt",
       price: 799,
       originalPrice: 1199,
-      image:
-        "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.7,
       reviews: 201,
       category: "hoodies",
@@ -101,8 +97,7 @@ export default function Shop() {
       name: "Polo T-Shirt",
       price: 449,
       originalPrice: 749,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33974813/pexels-photo-33974813.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.6,
       reviews: 167,
       category: "tshirts",
@@ -112,8 +107,7 @@ export default function Shop() {
       name: "College Water Bottle",
       price: 299,
       originalPrice: 499,
-      image:
-        "https://images.unsplash.com/photo-1589985643246-8049b3e0eab7?w=500&h=500&fit=crop",
+      image: "https://images.pexels.com/photos/33223905/pexels-photo-33223905.jpeg?auto=compress&cs=tinysrgb&w=600",
       rating: 4.8,
       reviews: 234,
       category: "accessories",
@@ -121,200 +115,230 @@ export default function Shop() {
   ];
 
   const categories = [
-    { id: "hoodies", label: "Hoodies" },
-    { id: "tshirts", label: "T-Shirts" },
-    { id: "bottoms", label: "Bottoms" },
-    { id: "accessories", label: "Accessories" },
+    { id: "hoodies", label: "Hoodies", emoji: "🧥" },
+    { id: "tshirts", label: "T-Shirts", emoji: "👕" },
+    { id: "bottoms", label: "Bottoms", emoji: "👖" },
+    { id: "accessories", label: "Accessories", emoji: "🎒" },
   ];
 
-  // Filter and sort products
-  let filteredProducts = allProducts.filter((product) => {
-    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-    const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.includes(product.category);
-    return matchesPrice && matchesCategory;
-  });
-
-  // Sort products
-  if (sortBy === "price-low") {
-    filteredProducts.sort((a, b) => a.price - b.price);
-  } else if (sortBy === "price-high") {
-    filteredProducts.sort((a, b) => b.price - a.price);
-  } else if (sortBy === "rating") {
-    filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-  }
-
-  const toggleCategory = (categoryId: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(categoryId)
-        ? prev.filter((id) => id !== categoryId)
-        : [...prev, categoryId]
-    );
+  const scrollCarousel = (key: string, direction: "left" | "right") => {
+    const carousel = carouselRefs.current[key];
+    if (carousel) {
+      const scrollAmount = 400;
+      carousel.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
   };
 
+  const getProductsByCategory = (categoryId: string) => {
+    return allProducts.filter((p) => p.category === categoryId);
+  };
+
+  const sectionCollections = [
+    {
+      key: "hot-deals",
+      title: "🔥 Hot Deals",
+      subtitle: "Limited time offers on your favorites",
+      products: allProducts.filter((p) => p.originalPrice && p.originalPrice - p.price > 300),
+    },
+    {
+      key: "featured",
+      title: "✨ Featured Collection",
+      subtitle: "Our top-rated products",
+      products: allProducts.filter((p) => p.isFeatured),
+    },
+    {
+      key: "new-arrivals",
+      title: "🆕 New Arrivals",
+      subtitle: "Fresh styles just added",
+      products: allProducts.slice(0, 6),
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
       <Header />
 
-      {/* Page Header */}
-      <section className="bg-muted py-8">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-            Shop Our Collection
+      {/* Hero Section */}
+      <section className="relative h-96 bg-gradient-to-r from-primary via-primary/80 to-secondary overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 right-20 w-72 h-72 bg-white rounded-full mix-blend-overlay blur-3xl"></div>
+          <div className="absolute bottom-0 left-20 w-96 h-96 bg-secondary/30 rounded-full mix-blend-overlay blur-3xl"></div>
+        </div>
+
+        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start">
+          <p className="text-primary-foreground/80 text-sm md:text-base font-semibold uppercase tracking-widest mb-3">
+            Explore & Discover
+          </p>
+          <h1 className="text-5xl md:text-6xl font-black text-primary-foreground mb-4 leading-tight">
+            College Essentials
           </h1>
-          <p className="text-muted-foreground mt-2">
-            {filteredProducts.length} products available
+          <p className="text-lg text-primary-foreground/90 max-w-2xl">
+            Curated collection of premium college merchandise designed for style, comfort, and self-expression.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          {/* Filters - Desktop */}
-          <div className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24 space-y-6">
-              {/* Price Filter */}
-              <div className="pb-6 border-b border-border">
-                <h3 className="font-semibold text-foreground mb-4">Price</h3>
-                <Slider
-                  value={priceRange}
-                  onValueChange={setPriceRange}
-                  min={0}
-                  max={3000}
-                  step={50}
-                  className="w-full"
-                />
-                <div className="flex justify-between mt-4 text-sm text-muted-foreground">
-                  <span>₹{priceRange[0]}</span>
-                  <span>₹{priceRange[1]}</span>
-                </div>
-              </div>
+      {/* Category Filter Tabs */}
+      <section className="container mx-auto px-4 py-8 sticky top-24 bg-gradient-to-b from-background via-background to-transparent z-10">
+        <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className={`px-6 py-2 rounded-full font-semibold whitespace-nowrap transition-all ${
+              selectedCategory === null
+                ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                : "bg-muted text-foreground hover:bg-muted/80"
+            }`}
+          >
+            All Products
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-6 py-2 rounded-full font-semibold whitespace-nowrap transition-all flex items-center gap-2 ${
+                selectedCategory === cat.id
+                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+              }`}
+            >
+              <span>{cat.emoji}</span>
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
-              {/* Category Filter */}
-              <div className="pb-6 border-b border-border">
-                <h3 className="font-semibold text-foreground mb-4">Categories</h3>
-                <div className="space-y-3">
-                  {categories.map((category) => (
-                    <label
-                      key={category.id}
-                      className="flex items-center cursor-pointer"
-                    >
-                      <Checkbox
-                        checked={selectedCategories.includes(category.id)}
-                        onCheckedChange={() => toggleCategory(category.id)}
-                      />
-                      <span className="ml-2 text-foreground text-sm">
-                        {category.label}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Rating Filter */}
-              <div>
-                <h3 className="font-semibold text-foreground mb-4">Rating</h3>
-                <div className="space-y-3">
-                  {[5, 4, 3].map((rating) => (
-                    <label key={rating} className="flex items-center cursor-pointer">
-                      <Checkbox />
-                      <span className="ml-2 text-foreground text-sm">
-                        {rating}★ & above
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div>
+      {/* Category View */}
+      {selectedCategory && (
+        <section className="container mx-auto px-4 py-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                {categories.find((c) => c.id === selectedCategory)?.label}
+              </h2>
+              <p className="text-muted-foreground mt-2">
+                {getProductsByCategory(selectedCategory).length} products available
+              </p>
             </div>
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="p-2 hover:bg-muted rounded-lg transition"
+            >
+              <X className="w-6 h-6" />
+            </button>
           </div>
 
-          {/* Products and Controls */}
-          <div className="flex-1">
-            {/* Sorting and Mobile Filter */}
-            <div className="flex items-center justify-between mb-6 pb-6 border-b border-border">
-              <div className="flex items-center gap-4">
-                <p className="text-sm text-muted-foreground">Sort by</p>
-                <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="popular">Most Popular</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    <SelectItem value="rating">Highest Rated</SelectItem>
-                  </SelectContent>
-                </Select>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {getProductsByCategory(selectedCategory).map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Carousel Sections */}
+      {!selectedCategory && (
+        <div className="space-y-16 py-8">
+          {sectionCollections.map((section) => (
+            <section key={section.key} className="container mx-auto px-4">
+              <div className="mb-6">
+                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-2">
+                  {section.title}
+                </h2>
+                <p className="text-muted-foreground">{section.subtitle}</p>
               </div>
 
-              {/* Mobile Filter Button */}
-              <button
-                onClick={() => setShowMobileFilters(!showMobileFilters)}
-                className="lg:hidden px-4 py-2 border border-border rounded-lg text-foreground hover:bg-muted transition"
-              >
-                Filters
-              </button>
-            </div>
+              {/* Carousel */}
+              <div className="relative group">
+                <div
+                  ref={(el) => {
+                    if (el) carouselRefs.current[section.key] = el;
+                  }}
+                  className="flex gap-6 overflow-x-auto scrollbar-hide pb-4"
+                >
+                  {section.products.map((product) => (
+                    <div
+                      key={product.id}
+                      className="flex-shrink-0 w-80 transition-transform duration-300 hover:scale-105"
+                    >
+                      <ProductCard {...product} />
+                    </div>
+                  ))}
+                </div>
 
-            {/* Mobile Filters */}
-            {showMobileFilters && (
-              <div className="lg:hidden mb-6 p-4 border border-border rounded-lg space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold">Filters</h3>
-                  <button onClick={() => setShowMobileFilters(false)}>
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-                {/* Mobile Price Filter */}
-                <div>
-                  <h4 className="font-semibold text-sm mb-2">Price</h4>
-                  <Slider
-                    value={priceRange}
-                    onValueChange={setPriceRange}
-                    min={0}
-                    max={3000}
-                    step={50}
-                  />
-                </div>
-                {/* Mobile Category Filter */}
-                <div>
-                  <h4 className="font-semibold text-sm mb-2">Categories</h4>
-                  <div className="space-y-2">
-                    {categories.map((category) => (
-                      <label
-                        key={category.id}
-                        className="flex items-center cursor-pointer"
-                      >
-                        <Checkbox
-                          checked={selectedCategories.includes(category.id)}
-                          onCheckedChange={() => toggleCategory(category.id)}
-                        />
-                        <span className="ml-2 text-sm">{category.label}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
+                {/* Navigation Buttons */}
+                <button
+                  onClick={() => scrollCarousel(section.key, "left")}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-primary/90"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={() => scrollCarousel(section.key, "right")}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-primary/90"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
               </div>
-            )}
+            </section>
+          ))}
+        </div>
+      )}
 
-            {/* Products Grid */}
-            {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} {...product} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground text-lg">
-                  No products found matching your filters.
+      {/* All Products Section */}
+      {!selectedCategory && (
+        <section className="container mx-auto px-4 py-16">
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-2">
+              🎯 All Products
+            </h2>
+            <p className="text-muted-foreground">Browse our complete collection</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {allProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Brand Story Section */}
+      {!selectedCategory && (
+        <section className="bg-foreground text-background py-16 mt-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">
+              Why NAAPTOL?
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div>
+                <div className="text-4xl mb-4">⚡</div>
+                <h3 className="text-xl font-bold mb-2">Instant Style</h3>
+                <p className="text-background/80">
+                  Elevate your college look instantly with premium pieces
                 </p>
               </div>
-            )}
+              <div>
+                <div className="text-4xl mb-4">🎓</div>
+                <h3 className="text-xl font-bold mb-2">Student Approved</h3>
+                <p className="text-background/80">
+                  Designed by students, for students
+                </p>
+              </div>
+              <div>
+                <div className="text-4xl mb-4">🏆</div>
+                <h3 className="text-xl font-bold mb-2">Quality Assured</h3>
+                <p className="text-background/80">
+                  Premium materials that last through college and beyond
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      )}
     </div>
   );
 }
