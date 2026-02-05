@@ -18,8 +18,7 @@ export default function Cart() {
       id: "1",
       name: "Classic College Hoodie",
       price: 899,
-      image:
-        "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=200&h=200&fit=crop",
+      image: "https://images.pexels.com/photos/19461584/pexels-photo-19461584.jpeg?auto=compress&cs=tinysrgb&w=200",
       quantity: 1,
       size: "M",
     },
@@ -27,8 +26,7 @@ export default function Cart() {
       id: "2",
       name: "Premium College T-Shirt",
       price: 349,
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop",
+      image: "https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&w=200",
       quantity: 2,
       size: "L",
     },
